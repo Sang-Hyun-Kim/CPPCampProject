@@ -152,12 +152,12 @@ void Asc(vector<int>& _userinput, int& _method)
 
 void MergeAsc(vector<int>& _userinput, int _left, int _right)
 {
-    vector<int> tmparr(_right - _left + 1,0);
+    vector<int> tmparr(_right - _left + 1,0);// 합병정렬을 위한 임시 배열
     int mid = (_left + _right) / 2;
     int i = _left;
     int j = mid + 1;
     int k = 0;
-    while (i <= mid && j <= _right)
+    while (i <= mid && j <= _right) // 오름차순 정렬을 위해 작은 값이 앞으로 가도록 정렬
     {
         if (_userinput[i] <= _userinput[j])
             tmparr[k++] = _userinput[i++];
@@ -178,9 +178,9 @@ void MergeAsc(vector<int>& _userinput, int _left, int _right)
         _userinput[_left + idx] = tmparr[idx];
 }
 
-void MergeDesc(vector<int>& _userinput, int _left, int _right)
+void MergeDesc(vector<int>& _userinput, int _left, int _right)// 내림차순 정렬을 위해 작은 값이 앞으로 가도록 정렬
 {
-    vector<int> tmparr(_right - _left + 1, 0);
+    vector<int> tmparr(_right - _left + 1, 0);// 합병정렬을 위한 임시 배열
     int mid = (_left + _right) / 2;
     int i = _left;
     int j = mid + 1;
@@ -208,11 +208,14 @@ void MergeDesc(vector<int>& _userinput, int _left, int _right)
 
 void Partition(vector<int>& _userinput, int _left, int _right, int& _method)
 {
+    // 중앙점을 기준으로 배열을 두 개로 나누는 함수
+    // 함수는 배열이 최소 두 칸이 될 때까지 나눈 뒤
+    // 구분된 두 칸에 대해 정렬기준에 따라 정렬한 뒤 다시 합친다.
     int mid;
     if (_left < _right)
     {
         mid = (_left + _right) / 2;
-        Partition(_userinput, _left, mid, _method);
+        Partition(_userinput, _left, mid, _method); 
         Partition(_userinput, mid + 1, _right, _method);
         MergeArray[_method](_userinput, _left, _right);
     }
