@@ -18,5 +18,22 @@
     <ClCompile Include="CH02_CPP_assignment04.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="BorrowManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BookManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BorrowManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Book.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BookManager.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
