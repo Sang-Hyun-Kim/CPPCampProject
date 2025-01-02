@@ -49,54 +49,34 @@ public:
     public:
 
         using iterator_category = random_access_iterator_tag;
-        Iterator(T* ptr) : m_ptr(ptr) {}
+        Iterator(T* ptr) : m_ptr(ptr) {} // 생성자
 
-        // Dereference operator
+        // 역참조 연산자
         T& operator*() const { return *m_ptr; }
 
-        // Arrow operator
+        // 
         T* operator->() const { return m_ptr; }
 
-        // Increment operator (prefix)
-        Iterator& operator++() {
-            ++m_ptr;
-            return *this;
-        }
+        // 전위 증가 연산자
+        Iterator& operator++() { ++m_ptr; return *this; }
 
-        // Increment operator (postfix)
-        Iterator operator++(int) {
-            Iterator temp = *this;
-            ++(*this);
-            return temp;
-        }
+        // 후위 증가 연산자
+        Iterator operator++(int) { Iterator temp = *this; ++(*this); return temp; }
 
-        // Decrement operator (prefix)
-        Iterator& operator--() {
-            --m_ptr;
-            return *this;
-        }
+        // 전위 감소 연산자
+        Iterator& operator--() { --m_ptr; return *this; }
 
-        // Decrement operator (postfix)
-        Iterator operator--(int) {
-            Iterator temp = *this;
-            --(*this);
-            return temp;
-        }
+        // 후위 감소 연산자
+        Iterator operator--(int) { Iterator temp = *this; --(*this); return temp;}
 
         // Addition operator (iterator + int)
-        Iterator operator+(int n) const {
-            return Iterator(m_ptr + n);
-        }
+        Iterator operator+(int n) const { return Iterator(m_ptr + n);}
 
         // Subtraction operator (iterator - int)
-        Iterator operator-(int n) const {
-            return Iterator(m_ptr - n);
-        }
+        Iterator operator-(int n) const { return Iterator(m_ptr - n); }
 
         // Difference operator (iterator - iterator)
-        ptrdiff_t operator-(const Iterator& other) const {
-            return m_ptr - other.m_ptr;
-        }
+        ptrdiff_t operator-(const Iterator& other) const { return m_ptr - other.m_ptr; }
 
         // Comparison operators
         bool operator==(const Iterator& other) const { return m_ptr == other.m_ptr; }
@@ -106,10 +86,8 @@ public:
         bool operator>(const Iterator& other) const { return m_ptr > other.m_ptr; }
         bool operator>=(const Iterator& other) const { return m_ptr >= other.m_ptr; }
 
-        // Subscript operator
-        T& operator[](int idx) const {
-            return *(m_ptr+idx);
-        }
+        // [] 접근
+        T& operator[](int idx) const { return *(m_ptr+idx); }
 
     private:
         T* m_ptr;

@@ -33,22 +33,23 @@ int main()
     {
         cout << i << " 번째 값: " << SVint[i] << endl;
     }
-    SimpleVector<int> SV2(SVint);
-    for (int i = 0; i < 14; ++i)
-    {
-        SV2[i] += 100;
-    }
+
     cout << "반복자 접근" << endl;
     for (auto it = SVint.begin(); it != SVint.end(); ++it)
     {
         cout << *it << endl;
     }
+    SimpleVector<int> SV2(SVint);
+    for (int i = 0; i < 14; ++i)
+    {
+        SV2[i] += 100;
+    }
     for (int i = 0; i < SVint.size(); ++i)
     {
-        cout << i << " 번째 값: " << SV2[i] << endl;
+        cout << "SV배열의" << i << " 번째 값: " << SV2[i] << endl;
     }
     //SVint.sortData();
-  
+    cout << "SV[2]: " << SV2[2] << endl;
     int debug2 = 12;
 
 }
