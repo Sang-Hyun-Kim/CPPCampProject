@@ -42,60 +42,60 @@ public:
     void pop_back();
     void resize(int _newCapacity);
     void sortData();
-public:
-    // STL 함수 사용을 위한 iterator 구현
-    class Iterator
-    {
-    public:
-
-        using iterator_category = random_access_iterator_tag;
-        Iterator(T* ptr) : m_ptr(ptr) {} // 생성자
-
-        // 역참조 연산자
-        T& operator*() const { return *m_ptr; }
-
-        // 
-        T* operator->() const { return m_ptr; }
-
-        // 전위 증가 연산자
-        Iterator& operator++() { ++m_ptr; return *this; }
-
-        // 후위 증가 연산자
-        Iterator operator++(int) { Iterator temp = *this; ++(*this); return temp; }
-
-        // 전위 감소 연산자
-        Iterator& operator--() { --m_ptr; return *this; }
-
-        // 후위 감소 연산자
-        Iterator operator--(int) { Iterator temp = *this; --(*this); return temp;}
-
-        // Addition operator (iterator + int)
-        Iterator operator+(int n) const { return Iterator(m_ptr + n);}
-
-        // Subtraction operator (iterator - int)
-        Iterator operator-(int n) const { return Iterator(m_ptr - n); }
-
-        // Difference operator (iterator - iterator)
-        ptrdiff_t operator-(const Iterator& other) const { return m_ptr - other.m_ptr; }
-
-        // Comparison operators
-        bool operator==(const Iterator& other) const { return m_ptr == other.m_ptr; }
-        bool operator!=(const Iterator& other) const { return m_ptr != other.m_ptr; }
-        bool operator<(const Iterator& other) const { return m_ptr < other.m_ptr; }
-        bool operator<=(const Iterator& other) const { return m_ptr <= other.m_ptr; }
-        bool operator>(const Iterator& other) const { return m_ptr > other.m_ptr; }
-        bool operator>=(const Iterator& other) const { return m_ptr >= other.m_ptr; }
-
-        // [] 접근
-        T& operator[](int idx) const { return *(m_ptr+idx); }
-
-    private:
-        T* m_ptr;
-    };
-
-
-    Iterator begin() { return Iterator(data); }
-    Iterator end() { return Iterator(data + currentSize); }
+//public:
+//    // STL 함수 사용을 위한 iterator 구현
+//    class Iterator
+//    {
+//    public:
+//
+//        using iterator_category = random_access_iterator_tag;
+//        Iterator(T* ptr) : m_ptr(ptr) {} // 생성자
+//
+//        // 역참조 연산자
+//        T& operator*() const { return *m_ptr; }
+//
+//        // 
+//        T* operator->() const { return m_ptr; }
+//
+//        // 전위 증가 연산자
+//        Iterator& operator++() { ++m_ptr; return *this; }
+//
+//        // 후위 증가 연산자
+//        Iterator operator++(int) { Iterator temp = *this; ++(*this); return temp; }
+//
+//        // 전위 감소 연산자
+//        Iterator& operator--() { --m_ptr; return *this; }
+//
+//        // 후위 감소 연산자
+//        Iterator operator--(int) { Iterator temp = *this; --(*this); return temp;}
+//
+//        // Addition operator (iterator + int)
+//        Iterator operator+(int n) const { return Iterator(m_ptr + n);}
+//
+//        // Subtraction operator (iterator - int)
+//        Iterator operator-(int n) const { return Iterator(m_ptr - n); }
+//
+//        // Difference operator (iterator - iterator)
+//        ptrdiff_t operator-(const Iterator& other) const { return m_ptr - other.m_ptr; }
+//
+//        // Comparison operators
+//        bool operator==(const Iterator& other) const { return m_ptr == other.m_ptr; }
+//        bool operator!=(const Iterator& other) const { return m_ptr != other.m_ptr; }
+//        bool operator<(const Iterator& other) const { return m_ptr < other.m_ptr; }
+//        bool operator<=(const Iterator& other) const { return m_ptr <= other.m_ptr; }
+//        bool operator>(const Iterator& other) const { return m_ptr > other.m_ptr; }
+//        bool operator>=(const Iterator& other) const { return m_ptr >= other.m_ptr; }
+//
+//        // [] 접근
+//        T& operator[](int idx) const { return *(m_ptr+idx); }
+//
+//    private:
+//        T* m_ptr;
+//    };
+//
+//
+//    Iterator begin() { return Iterator(data); }
+//    Iterator end() { return Iterator(data + currentSize); }
     
 private:
     int currentSize; // 현재 원소의 개수
@@ -213,5 +213,8 @@ inline void SimpleVector<T>::resize(int _newCapacity)
 template<typename T>
 inline void SimpleVector<T>::sortData()
 {
-    sort(begin(), end());
+    /*sort(begin(), end());*/
+
+    sort(data, data + currentSize);
+    int debug = 3;
 }
